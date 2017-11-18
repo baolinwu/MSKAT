@@ -1,0 +1,11 @@
+Package: MSKAT
+Title: Multi-trait Sequence Kernel Association Test
+Version: 0.1.0
+Imports: CompQuadForm, mvtnorm
+Description: This package implements several sequence kernel association test for multiple related traits.
+Depends: R (>= 3.0.0)
+License: GPL (>= 2)
+LazyData: true
+Author: Baolin Wu [aut, cre]
+Maintainer: Baolin Wu <baolin@umn.edu>
+RoxygenNote: 6.0.1
