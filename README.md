@@ -4,11 +4,11 @@
 -----
  - Two multivariate versions of SKAT are implemented.
  - A variation of the multivariate kernel machine regression (MKMR) is adapted to rare variant set association test.
-    - Ref: Maity,A., Sullivan,P.F., Tzeng,J. (2012) Multivariate Phenotype Association Analysis by Marker-Set Kernel Machine Regression. Genet. Epidemiol. 36, 686–695.
+    - Ref: Maity,A., Sullivan,P.F., Tzeng,J. (2012) Multivariate Phenotype Association Analysis by Marker-Set Kernel Machine Regression. *Genet. Epidemiol.*, 36, 686–695.
  - The current implementation requires the davies function in the CompQuadForm R package.
     - http://cran.r-project.org/web/packages/CompQuadForm/index.html
  - Multi-trait SKAT
-    - Ref: Wu,B., Pankow,J.S. (2016). Sequence kernel association test of multiple continuous phenotypes. Genetic Epidemiology, 40(2), 91-100.
+    - Ref: Wu,B., Pankow,J.S. (2016). Sequence kernel association test of multiple continuous phenotypes. *Genetic Epidemiology*, 40(2), 91-100.
 
 ## Sample codes
 ```r
