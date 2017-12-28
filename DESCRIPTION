@@ -6,6 +6,6 @@ Description: This package implements several sequence kernel association test fo
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: true
-Author: Baolin Wu [aut, cre]
+Author: Baolin Wu [aut, cre], Bin Guo [aut]
 Maintainer: Baolin Wu <baolin@umn.edu>
 RoxygenNote: 6.0.1
