@@ -41,10 +41,10 @@ MSATS <- function(Z,Sig, R, rho=c((0:5/10)^2,0.5,1)){
   Zj = colSums(Z)
   Qb = sum(Zj*t(iSig*Zj)); lamb = R1
   pvalb = pchisq(Qb/lamb, K,lower=FALSE)
-  ## MSKAT
+  ## VC
   Q = sum(Z%*%iSig*Z); lam1 = rep(lamR, K)
   pval1 = KATpval(Q,lam1)
-  ##
+  ## AT
   L = length(rho)
   L1 = L-1; rho1 = rho[-L]
   Qw = (1-rho)*Q + rho*Qb
@@ -61,10 +61,8 @@ MSATS <- function(Z,Sig, R, rho=c((0:5/10)^2,0.5,1)){
     pval[k] = KATpval(Qw[k],Lamk[[k]])
   }
   minP = min(pval)
-  ## if(minP>1e-3)    return( list(p.value=c(1.5*minP,pval[c(1,L)]), pval=pval, rho.est=rho[which.min(pval)]) )
-  ## p.value 
   qval = rep(0,L1)
-  for(k in 1:L1) qval[k] = Liu0.qval(minP, Lamk[[k]])  ## for(k in 1:L1) qval[k] = chisum.qval(minP, Lamk[[k]])
+  for(k in 1:L1) qval[k] = Liu0.qval(minP, Lamk[[k]])
   q1 = qchisq(minP,K,lower=FALSE)
   a1 = eigen(R, sym=TRUE);   Rh = a1$vec%*%diag(sqrt(a1$val))%*%t(a1$vec)
   Rh1 = rowSums(Rh);  H1 = outer(Rh1,Rh1)/R1
@@ -80,7 +78,7 @@ MSATS <- function(Z,Sig, R, rho=c((0:5/10)^2,0.5,1)){
     prec = prec*2
     p.value = try({ minP + integrate(katint, 0,q1, abs.tol=minP*prec)$val }, silent=TRUE)
   }
-  return(list(p.value=c(A=p.value, V=pval[1], B=pval[L]), pval=pval, rho.est=rho[which.min(pval)]) )
+  return(list(p.value=c(A=p.value, V=pval1, B=pvalb), pval=pval, rho.est=rho[which.min(pval)]) )
 }
 
 
