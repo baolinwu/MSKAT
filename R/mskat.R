@@ -37,7 +37,6 @@ MSKAT.cnull <- function(Ys,X=NULL){
 #' @references
 #' Wu,B. and Pankow,J.S. (2016) Sequence kernel association test of multiple continuous phenotypes. Genetic Epidemiology, 40(2), 91-100.
 #' @examples
-#' library(CompQuadForm)
 #' Y = matrix(rnorm(2000), 1000,2)
 #' X = matrix(rnorm(2000), 1000,2)
 #' G = matrix(rbinom(10000,2,0.02), 1000,10)
