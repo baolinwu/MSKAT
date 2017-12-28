@@ -25,12 +25,12 @@ MKMR(t(Y),X.list, Gm=G, W.beta=c(1,25))
 
 
 -----
-## Multi-trait SNP-set association tests using GWAS summary data
- - Reference
-    - Guo,B. and Wu,B. (2017) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. tech rep. 
+## SNP-set association tests across multiple phenotypes using GWAS summary data
+ - Multi-trait SNP-set Association Tests using GWAS Summary data (MSATS)
+    - Ref: Guo,B. and Wu,B. (2017) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. tech rep. 
  - Efficient and power MSATS tests: variance components test (VC), burden type test (BT), adaptive test (AT)
-    - All test p-values are efficiently and analytically computed: no need of Monte Carlo sampling and extremely scalable. 
-    - AT has robust performance and truly combines the strength of both VC and BT.
+    - All test p-values are efficiently and analytically computed: extremely scalable wihthout need of Monte Carlo sampling.
+    - The AT has robust performance and can truly combine the strength of both VC and BT.
  - Sample R codes
 ```r
 K = 4; M = 20
