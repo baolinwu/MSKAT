@@ -1,4 +1,4 @@
-# MSKAT R package
+# MSKAT
  - An R pacakge implementing various statistical methods for testing multi-trait variant-set association
 
 -----
