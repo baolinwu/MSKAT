@@ -1,6 +1,6 @@
 # MSKAT R package
  - An R pacakge implementing various statistical methods for testing multi-trait variant-set association
- 
+
 -----
 ## Testing the rare variant set association with multiple continuous phenotypes
  - Two multivariate versions of SKAT are implemented.
@@ -26,11 +26,11 @@ MKMR(t(Y),X.list, Gm=G, W.beta=c(1,25))
 
 -----
 ## Multi-trait SNP-set association tests using GWAS summary data
- - Efficient and power tests: variance components test (VC), burden type test (BT), adaptive test (AT)
- - All test p-values are efficiently and analytically computed.
-    - no need of Monte Carlo sampling. 
-    - extremely scalable 
- - AT has robust performance and truly combines the strength of both VC and BT.
+ - Reference
+    - Guo,B. and Wu,B. (2017) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. tech rep. 
+ - Efficient and power MSATS tests: variance components test (VC), burden type test (BT), adaptive test (AT)
+    - All test p-values are efficiently and analytically computed: no need of Monte Carlo sampling and extremely scalable. 
+    - AT has robust performance and truly combines the strength of both VC and BT.
  - Sample R codes
 ```r
 K = 4; M = 20
