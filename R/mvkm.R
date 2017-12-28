@@ -203,7 +203,7 @@ MKMR <- function(Y, X.list, Sigma=NULL, Gm, W=NULL, W.beta=c(1,25), n.sim=NULL){
 
     pv = mean(c(sim.tmp) > c(test.stat.our))
   } else{
-    pv = KAT.pval(test.stat.our, M.eig)
+    pv = KATpval(test.stat.our, M.eig)
   }
   return(list(test.stat = c(test.stat.our), p.value = pv))
 }

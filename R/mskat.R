@@ -1,74 +1,3 @@
-### saddlepoint approx: modified from Lumley survey package.
-saddle = function(x,lambda){
-  d = max(lambda)
-  lambda = lambda/d
-  x = x/d
-  k0 = function(zeta) -sum(log(1-2*zeta*lambda))/2
-  kprime0 = function(zeta) sapply(zeta, function(zz) sum(lambda/(1-2*zz*lambda)))
-  kpprime0 = function(zeta) 2*sum(lambda^2/(1-2*zeta*lambda)^2)
-  n = length(lambda)
-  if (any(lambda < 0)) {
-    lmin = max(1/(2 * lambda[lambda < 0])) * 0.99999
-  } else if (x>sum(lambda)){
-    lmin = -0.01
-  } else {
-    lmin = -length(lambda)/(2*x)
-  }
-  lmax = min(1/(2*lambda[lambda>0]))*0.99999
-  hatzeta = uniroot(function(zeta) kprime0(zeta) - x, lower = lmin, upper = lmax, tol = 1e-08)$root
-  w = sign(hatzeta)*sqrt(2*(hatzeta*x-k0(hatzeta)))
-  v = hatzeta*sqrt(kpprime0(hatzeta))
-  if(abs(hatzeta)<1e-4){
-    return(NA)
-  } else{
-    return( pnorm(w+log(v/w)/w, lower.tail=FALSE) )
-  }
-}
-Sadd.pval = function(Q.all,lambda){
-  sad = rep(1,length(Q.all))
-  if(sum(Q.all>0)>0){
-    sad[Q.all>0] = sapply(Q.all[Q.all>0],saddle,lambda=lambda)
-  }
-  id = which(is.na(sad))
-  if(length(id)>0){
-    sad[id] = Liu.pval(Q.all[id], lambda)
-  }
-  return(sad)
-}
-### modified Liu method from Lee SKAT-O paper
-Liu.pval = function(Q, lambda){
-  c1 = rep(0,4); for(i in 1:4){ c1[i] = sum(lambda^i) }
-  muQ = c1[1];  sigmaQ = sqrt(2 *c1[2])
-  s1 = c1[3]/c1[2]^(3/2);  s2 = c1[4]/c1[2]^2
-  if(s1^2 > s2){
-    a = 1/(s1 - sqrt(s1^2 - s2));  d = s1 *a^3 - a^2;  l = a^2 - 2*d
-  } else {
-    l = 1/s2;  a = sqrt(l);  d = 0
-  }
-  muX = l+d;  sigmaX = sqrt(2)*a
-  
-  Q.Norm = (Q - muQ)/sigmaQ
-  Q.Norm1 = Q.Norm*sigmaX + muX
-  pchisq(Q.Norm1, df = l,ncp=d, lower.tail=FALSE)
-}
-#' Compute the tail probability of 1-DF chi-square mixtures
-#'
-#' Use Davies' method; if fail, switch to the Saddlepoint approx 
-#' @param Q.all  test statistics
-#' @param lambda  mixing coefficients
-#' @param acc  error bound
-#' @param lim  maximum number of integration terms
-#' @export
-KAT.pval <- function(Q.all, lambda, acc=1e-9,lim=1e6){
-  pval = rep(0, length(Q.all))
-  i1 = which(is.finite(Q.all))
-  for(i in i1){
-    tmp = davies(Q.all[i],lambda,acc=acc,lim=lim); pval[i] = tmp$Qq
-    if((tmp$ifault>0)|(pval[i]<=0)|(pval[i]>=1)) pval[i] = Sadd.pval(Q.all[i],lambda)
-  }
-  return(pval)
-}
-
 #' Fit a null multi-trait regression model
 #'
 #' Compute a null multivariate regression model
@@ -129,22 +58,17 @@ MSKAT <- function(obj, G, W=NULL, W.beta=c(1,25)){
   S = t(t(U0)%*%G/sqrt(V0)) ## m,K
   Ge = G - Ux%*%(t(Ux)%*%G); Ge2 = t(Ge)%*%Ge
   R = t(Ge2*W)*W
-  Lam = svd(R, nu=0,nv=0)$d
-  Lam = Lam[Lam>0]
+  Lam = eigen(R, sym=TRUE, only.val=TRUE)$val
   ##
   ihSig = obj$ihSig
   Z = W*S%*%ihSig
-  ## Zv = kronecker(R,diag(K))
   Q = sum(Z^2)
-  pval = KAT.pval(Q,rep(Lam,K))
+  pval = KATpval(Q,rep(Lam,K))
   ##
   Z = W*S
-  ## Zv = kronecker(R, obj$Sig)
-  ## Lam1 = svd(obj$Sig,nu=0,nv=0)$d; 
   Lam1 = eigen(obj$Sig,sym=TRUE,only.val=TRUE)$val 
-  Lam1 = Lam1[Lam1>0]
   Qp = sum(Z^2)
-  pvalp = KAT.pval(Qp, c(outer(Lam,Lam1)))
+  pvalp = KATpval(Qp, c(outer(Lam,Lam1)))
   return( list(p.value=c(pval, pvalp), Q=c(Q,Qp)) )
 }
 
