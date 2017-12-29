@@ -25,7 +25,6 @@ MSKAT(obj, G, W = NULL, W.beta = c(1, 25))
 Compute the variant set association test statistic and p-value
 }
 \examples{
-library(CompQuadForm)
 Y = matrix(rnorm(2000), 1000,2)
 X = matrix(rnorm(2000), 1000,2)
 G = matrix(rbinom(10000,2,0.02), 1000,10)
