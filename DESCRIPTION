@@ -1,8 +1,8 @@
 Package: MSKAT
-Title: Multi-trait Sequence Kernel Association Test
+Title: Various multi-trait variant-set association test methods
 Version: 0.1.0
-Imports: CompQuadForm, mvtnorm
-Description: This package implements several sequence kernel association test for multiple related traits.
+Imports: mvtnorm
+Description: An R pacakge implementing various statistical methods for testing multi-trait variant-set association.
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: true
