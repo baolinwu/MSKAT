@@ -1,5 +1,5 @@
 # MSKAT
- - An R pacakge implementing various statistical methods for testing multi-trait variant-set association
+ - An R package implementing various statistical methods for testing multi-trait variant-set association
 
 -----
 ## Testing the rare variant set association with multiple continuous phenotypes

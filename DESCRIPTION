@@ -2,7 +2,7 @@ Package: MSKAT
 Title: Various multi-trait variant-set association test methods
 Version: 0.1.0
 Imports: mvtnorm
-Description: An R pacakge implementing various statistical methods for testing multi-trait variant-set association.
+Description: An R package implementing various statistical methods for testing multi-trait variant-set association.
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: true
