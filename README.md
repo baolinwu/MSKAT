@@ -4,7 +4,7 @@
 -----
 ## SNP-set association tests across multiple phenotypes using GWAS summary data
  - Multi-trait SNP-set Association Tests using GWAS Summary data (MSATS)
- - Efficient and power MSATS tests: variance components test (VC), burden type test (BT), adaptive test (AT)
+ - Efficient and powerful MSATS tests: variance components test (VC), burden type test (BT), adaptive test (AT)
     - All test p-values are efficiently and analytically computed: extremely scalable without the need of Monte Carlo sampling.
     - The AT has robust performance and can truly combine the strength of both VC and BT.
  - Reference
