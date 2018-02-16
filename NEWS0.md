@@ -22,3 +22,6 @@ MKMR(t(Y),X.list, Gm=G, W.beta=c(1,25))
 
 -----
 ## Testing the rare variant set association across multiple traits.
+ - Reference
+    - Wu,B. and Qin,H. (2018). On testing cross-phenotype effects of rare variants. *AHG*, under revision.
+    
