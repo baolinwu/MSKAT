@@ -4,7 +4,7 @@
 \alias{EMSATS}
 \title{PCA based adapitve SNP-set association test of multiple traits using GWAS summary statistics}
 \usage{
-EMSATS(Z, Sig, R, rho = c(-2, -1, 0, 0.5, 1))
+EMSATS(Z, Sig, R, rho = c(-10, -5, 2, -1, 0:5/5))
 }
 \arguments{
 \item{Z}{M by K matrix of summary Z-statistics for M variants across K traits}
@@ -25,7 +25,7 @@ EMSATS(Z, Sig, R, rho = c(-2, -1, 0, 0.5, 1))
 \description{
 We use the LD score regression (Bulik-Sullivan et al.) to accurately estimate the trait correlation,
 which is then used to construct the multi-trait association tests of multiple variants in a gene or pathway: PC based test (ET), 
-variance components test (VT), and their adaptive test (AT)
+variance components test (VT), and their adaptive test (AT). ET works well for mediated pleiotropy (see ref).
 }
 \examples{
 K = 4; M = 20
@@ -42,5 +42,5 @@ Z[ij] = Z[ij] + rnorm(20)*1.5
 EMSATS(Z,Sig,R)
 }
 \references{
-Guo,B. and Wu,B. (2017) PCA based adaptive multi-trait SNP-set association test using the GWAS summary statistics. tech rep.
+Guo,B. Liu,N. and Wu,B. (2018) PCA based adaptive multi-trait SNP-set association test using the GWAS summary statistics. tech rep.
 }

@@ -2,7 +2,7 @@
 #'
 #' We use the LD score regression (Bulik-Sullivan et al.) to accurately estimate the trait correlation,
 #' which is then used to construct the multi-trait association tests of multiple variants in a gene or pathway: PC based test (ET), 
-#' variance components test (VT), and their adaptive test (AT)
+#' variance components test (VT), and their adaptive test (AT). ET works well for mediated pleiotropy (see ref).
 #' 
 #' @param  Z  M by K matrix of summary Z-statistics for M variants across K traits
 #' @param  Sig estimated trait correlation matrix (K by K)
@@ -16,7 +16,7 @@
 #' }
 #' @export
 #' @references
-#' Guo,B. and Wu,B. (2017) PCA based adaptive multi-trait SNP-set association test using the GWAS summary statistics. tech rep.
+#' Guo,B. Liu,N. and Wu,B. (2018) PCA based adaptive multi-trait SNP-set association test using the GWAS summary statistics. tech rep.
 #' @examples
 #' K = 4; M = 20
 #' R = cor(matrix(rnorm(500*M),500,M)*sqrt(0.8)+rnorm(500)*sqrt(0.2))
@@ -30,7 +30,7 @@
 #' ij = cbind(sample(1:M, size=20, rep=TRUE), sample(1:K, size=20, rep=TRUE))
 #' Z[ij] = Z[ij] + rnorm(20)*1.5
 #' EMSATS(Z,Sig,R)
-EMSATS <- function(Z,Sig, R, rho=c(-2,-1,0,0.5,1)){
+EMSATS <- function(Z,Sig, R, rho=c(-10,-5,2,-1,0:5/5)){
   if(class(Z)!='matrix') Z = as.matrix(Z)
   M = dim(Z)[1]; K = dim(Z)[2]
   a0 = eigen(Sig, sym=TRUE)
