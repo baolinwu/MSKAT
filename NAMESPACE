@@ -2,7 +2,6 @@
 
 export(EMSATS)
 export(KATpval)
-export(Lmsatz)
 export(MKMR)
 export(MSATS)
 export(MSKAT)

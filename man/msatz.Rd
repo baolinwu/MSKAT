@@ -2,9 +2,9 @@
 % Please edit documentation in R/msatZ.R
 \name{msatz}
 \alias{msatz}
-\title{Multi-trait SNP-set association test using GWAS summary data}
+\title{GWAS summary data based SNP-set association test across multiple phenotypes}
 \usage{
-msatz(Z, Sig, R, rho = 0:10/10)
+msatz(Z, Sig, R)
 }
 \arguments{
 \item{Z}{M by K matrix of summary Z-statistics for M variants across K traits}
@@ -12,18 +12,13 @@ msatz(Z, Sig, R, rho = 0:10/10)
 \item{Sig}{estimated trait correlation matrix (K by K)}
 
 \item{R}{variant LD correlation matrix (M by M)}
-
-\item{rho}{weight assigned to the ST}
 }
 \value{
-\describe{
-  \item{p.value}{ test p-values for: AT, SST, ST }
-  \item{pval}{ vector of all p-values }
-  \item{rho.est}{ the optimal rho weight }
-}
+p-value vector: FCT, SBT, S2T and TCT
 }
 \description{
-Efficient multi-trait SNP-set association tests: squared sum test (SST), sum test (ST), their adaptive test (AT)
+Efficient multi-trait SNP-set association tests: sum of squared test (S2T), squared burden test (SBT), their adaptive test:
+Fisher combination test (FCT), and Tippett combination test (TCT).
 }
 \examples{
 K = 4; M = 20
@@ -40,5 +35,5 @@ Z[ij] = Z[ij] + rnorm(20)*1.5
 msatz(Z,Sig,R)
 }
 \references{
-Guo,B. and Wu,B. (2017) GWAS summary data based multi-trait SNP-set association test to identify novel genetic variants. tech rep.
+Guo,B. and Wu,B. (2018) GWAS summary data based SNP-set association test across multiple phenotypes to identify novel genetic variants. tech rep.
 }
