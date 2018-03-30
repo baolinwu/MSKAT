@@ -43,7 +43,7 @@ msatz <- function(Z, Sig, R){
   ## Fisher comb
   Qb = -2*log(pvalb); Qe = -2*log(pvale)
   fval = pchisq(Qb+Qe, 4, lower=FALSE)
-  ## Tippet (minP)
+  ## Tippett
   tval = 1-(1-min(pvale,pvalb))^2
   return( list(p.value=c(FCT=fval, SBT=pvalb, S2T=pvalv, TCT=tval)) )
 }
