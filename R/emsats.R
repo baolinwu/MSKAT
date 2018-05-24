@@ -60,6 +60,6 @@ EMSATS <- function(Z,Sig, R, rho=c(-10,-5,2,-1,0:5/5)){
   dx = sapply(q1x, function(x) min((qval[-L]-x)/(1-rho[-L])))
   p1 = KATpval(dx, lam1);  p2 = KATpval(q1x, lamR)
   p.val = minP - sum((p1[-1]+p1[-B])/2*diff(p2))
-  return( list(p.value=c(AT=pvalo,VC=pval[rho==0],ET=pval[rho==1]), pval=pval, rho.est=rho[which.min(pval)]) )
+  return( list(p.value=c(AT=p.val,VC=pval[rho==0],ET=pval[rho==1]), pval=pval, rho.est=rho[which.min(pval)]) )
 }
 
