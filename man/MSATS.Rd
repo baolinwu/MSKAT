@@ -13,17 +13,17 @@ MSATS(Z, Sig, R, rho = c((0:5/10)^2, 0.5, 1))
 
 \item{R}{variant LD correlation matrix (M by M)}
 
-\item{rho}{weight assigned to the BT}
+\item{rho}{weight assigned to the MBT}
 }
 \value{
 \describe{
-  \item{p.value}{ test p-values for: AT, VC, BT }
+  \item{p.value}{ test p-values for MAT, MQT, MBT }
   \item{pval}{ vector of all p-values }
   \item{rho.est}{ the optimal rho weight }
 }
 }
 \description{
-Efficient multi-trait SNP-set association tests: variance components test (VC), burden type test (BT), adaptive test (AT)
+Efficient multi-trait SNP-set association tests: variance components test (MQT), burden type test (MBT), adaptive test (MAT)
 }
 \examples{
 K = 4; M = 20

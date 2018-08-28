@@ -6,6 +6,7 @@ Description: An R package implementing various statistical methods for testing m
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: true
+Encoding: UTF-8
 Author: Baolin Wu [aut, cre], Bin Guo [aut]
 Maintainer: Baolin Wu <baolin@umn.edu>
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

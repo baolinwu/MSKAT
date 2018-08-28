@@ -1,14 +1,14 @@
 #' Multi-trait SNP-set association test using GWAS summary data
 #'
-#' Efficient multi-trait SNP-set association tests: variance components test (VC), burden type test (BT), adaptive test (AT)
+#' Efficient multi-trait SNP-set association tests: variance components test (MQT), burden type test (MBT), adaptive test (MAT)
 #' 
 #' @param  Z  M by K matrix of summary Z-statistics for M variants across K traits
 #' @param  Sig estimated trait correlation matrix (K by K)
 #' @param  R  variant LD correlation matrix (M by M)
-#' @param  rho  weight assigned to the BT
+#' @param  rho  weight assigned to the MBT
 #' @return
 #' \describe{
-#'   \item{p.value}{ test p-values for: AT, VC, BT }
+#'   \item{p.value}{ test p-values for MAT, MQT, MBT }
 #'   \item{pval}{ vector of all p-values }
 #'   \item{rho.est}{ the optimal rho weight }
 #' }
@@ -78,7 +78,7 @@ MSATS <- function(Z,Sig, R, rho=c((0:5/10)^2,0.5,1)){
     prec = prec*2
     p.value = try({ minP + integrate(katint, 0,q1, abs.tol=minP*prec)$val }, silent=TRUE)
   }
-  return(list(p.value=c(A=p.value, V=pval1, B=pvalb), pval=pval, rho.est=rho[which.min(pval)]) )
+  return(list(p.value=c(MAT=p.value, MQT=pval1, MBT=pvalb), pval=pval, rho.est=rho[which.min(pval)]) )
 }
 
 
