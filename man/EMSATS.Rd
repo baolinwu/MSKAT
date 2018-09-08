@@ -42,5 +42,5 @@ Z[ij] = Z[ij] + rnorm(20)*1.5
 EMSATS(Z,Sig,R)
 }
 \references{
-Guo,B. Liu,N. and Wu,B. (2018) PCA based adaptive multi-trait SNP-set association test using the GWAS summary statistics. tech rep.
+Guo,B. Liu,N. and Wu,B. (2018) Integrate multiple traits and multiple variants to detect novel disease-gene association using GWAS summary data. tech rep.
 }
