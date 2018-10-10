@@ -14,7 +14,7 @@
 #' }
 #' @export
 #' @references
-#' Guo,B. and Wu,B. (2018) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. tech rep.
+#' Guo,B. and Wu,B. (2018) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. \emph{Bioinformatics}, bty811.
 #' @examples
 #' K = 4; M = 20
 #' R = cor(matrix(rnorm(500*M),500,M)*sqrt(0.8)+rnorm(500)*sqrt(0.2))

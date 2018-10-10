@@ -40,5 +40,5 @@ Z[ij] = Z[ij] + rnorm(20)*1.5
 MSATS(Z,Sig,R)
 }
 \references{
-Guo,B. and Wu,B. (2018) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. tech rep.
+Guo,B. and Wu,B. (2018) Powerful and efficient SNP-set association tests across multiple phenotypes using GWAS summary data. \emph{Bioinformatics}, bty811.
 }
